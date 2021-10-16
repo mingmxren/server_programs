@@ -1,0 +1,2 @@
+
+export PATH=$(dirname "$(readlink -f "$0")")/go/bin:$PATH
