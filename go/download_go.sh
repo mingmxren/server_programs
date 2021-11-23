@@ -6,9 +6,9 @@ cd $(dirname "$(readlink -f "$0")")
 
 dirname="go"
 
-targz_filename="go1.17.2.linux-amd64.tar.gz"
-targz_md5sum="b7af894763e397335efe5a9ca70a5d63"
-url="https://golang.org/dl/$targz_filename"
+targz_filename="go1.17.3.linux-amd64.tar.gz"
+url="https://mirrors.ustc.edu.cn/golang/$targz_filename"
+targz_sha256sum=$(curl $url.sha256)
 
 mkdir -p data
 cd data
@@ -23,9 +23,9 @@ fi
 if [ ! -e $targz_filename ] ; then
 	curl -L $url -o $targz_filename
 fi
-local_md5sum="$(md5sum $targz_filename | awk '{print $1}')"
+local_sha256sum="$(sha256sum $targz_filename | awk '{print $1}')"
 if [ "$local_md5sum" != "$targz_md5sum" ] ; then
-	echo " $targz_filename local md5sum($local_md5sum) != $targz_md5sum"
+	echo " $targz_filename local md5sum($local_md5sum) != $targz_sha256sum"
 	exit 1
 fi
 
