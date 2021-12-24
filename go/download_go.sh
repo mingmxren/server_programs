@@ -6,7 +6,7 @@ cd $(dirname "$(readlink -f "$0")")
 
 dirname="go"
 
-targz_filename="go1.17.3.linux-amd64.tar.gz"
+targz_filename="go1.17.5.linux-amd64.tar.gz"
 url="https://mirrors.ustc.edu.cn/golang/$targz_filename"
 targz_sha256sum=$(curl $url.sha256)
 
